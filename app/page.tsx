@@ -1,11 +1,7 @@
-import Image from "next/image";
-import { Room } from "./Room";
-import { CollaborativeApp } from "./CollaborativeApp";
-
 export default function Home() {
   return (
-    <Room>
-      <CollaborativeApp />
-    </Room>
+    <div className="h-[100vh] w-full flex justify-center items-center">
+      <h1 className="text-2xl text-green-300 font-extrabold">Liveblocks Figma clone</h1>
+    </div>
   );
 }

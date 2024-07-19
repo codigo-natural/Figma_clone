@@ -1,15 +1,20 @@
 // Define Liveblocks types for your application
+
+import { LiveMap } from "@liveblocks/client";
+
 // https://liveblocks.io/docs/api-reference/liveblocks-react#Typing-your-data
 declare global {
   interface Liveblocks {
     // Each user's Presence, for useMyPresence, useOthers, etc.
     Presence: {
+      thrttle: 16,
       // Example, real-time cursor coordinates
       // cursor: { x: number; y: number };
     };
 
     // The Storage tree for the room, for useMutation, useStorage, etc.
     Storage: {
+      canvasObjects: LiveMap<string, any>;
       // Example, a conflict-free list
       // animals: LiveList<string>;
     };
@@ -35,6 +40,11 @@ declare global {
       // Example, attaching coordinates to a thread
       // x: number;
       // y: number;
+      reolved: boolean;
+      zIndex: number;
+      time?: number;
+      x: number;
+      y: number
     };
 
     // Custom room info set with resolveRoomsInfo, for useRoomInfo
