@@ -1,4 +1,4 @@
-function CursorSVG({ color }: { color: string }) {
+export function CursorSVG({ color }: { color: string }) {
   return (
     <svg
       className="relative"
@@ -16,5 +16,3 @@ function CursorSVG({ color }: { color: string }) {
     </svg>
   );
 }
-
-export default CursorSVG;

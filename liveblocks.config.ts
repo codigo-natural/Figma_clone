@@ -1,13 +1,20 @@
 // Define Liveblocks types for your application
 
-import { LiveMap } from "@liveblocks/client";
+import { createClient, LiveMap } from "@liveblocks/client";
+
+const client = createClient({
+  throttle: 16,
+  publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!
+})
 
 // https://liveblocks.io/docs/api-reference/liveblocks-react#Typing-your-data
 declare global {
   interface Liveblocks {
     // Each user's Presence, for useMyPresence, useOthers, etc.
     Presence: {
-      thrttle: 16,
+
+      // thrttle: 16,
+      // cursor: { x: number; y: number };
       // Example, real-time cursor coordinates
       // cursor: { x: number; y: number };
     };
@@ -31,16 +38,16 @@ declare global {
 
     // Custom events, for useBroadcastEvent, useEventListener
     RoomEvent: {};
-      // Example has two events, using a union
-      // | { type: "PLAY" } 
-      // | { type: "REACTION"; emoji: "🔥" };
+    // Example has two events, using a union
+    // | { type: "PLAY" } 
+    // | { type: "REACTION"; emoji: "🔥" };
 
     // Custom metadata set on threads, for useThreads, useCreateThread, etc.
     ThreadMetadata: {
       // Example, attaching coordinates to a thread
       // x: number;
       // y: number;
-      reolved: boolean;
+      resolved: boolean;
       zIndex: number;
       time?: number;
       x: number;
@@ -54,6 +61,7 @@ declare global {
       // url: string;
     };
   }
+
 }
 
-export {};
+export { };
