@@ -1,4 +1,4 @@
-import { fabric } from "fabric";
+import { Circle, fabric, IText, Line, Rect, Triangle } from "fabric";
 import { v4 as uuidv4 } from "uuid";
 
 import {
@@ -9,7 +9,7 @@ import {
 } from "@/types/type";
 
 export const createRectangle = (pointer: PointerEvent) => {
-  const rect = new fabric.Rect({
+  const rect = new Rect({
     left: pointer.x,
     top: pointer.y,
     width: 100,
@@ -22,7 +22,7 @@ export const createRectangle = (pointer: PointerEvent) => {
 };
 
 export const createTriangle = (pointer: PointerEvent) => {
-  return new fabric.Triangle({
+  return new Triangle({
     left: pointer.x,
     top: pointer.y,
     width: 100,
@@ -33,7 +33,7 @@ export const createTriangle = (pointer: PointerEvent) => {
 };
 
 export const createCircle = (pointer: PointerEvent) => {
-  return new fabric.Circle({
+  return new Circle({
     left: pointer.x,
     top: pointer.y,
     radius: 100,
@@ -43,7 +43,7 @@ export const createCircle = (pointer: PointerEvent) => {
 };
 
 export const createLine = (pointer: PointerEvent) => {
-  return new fabric.Line(
+  return new Line(
     [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
     {
       stroke: "#aabbcc",
@@ -54,7 +54,7 @@ export const createLine = (pointer: PointerEvent) => {
 };
 
 export const createText = (pointer: PointerEvent, text: string) => {
-  return new fabric.IText(text, {
+  return new IText(text, {
     left: pointer.x,
     top: pointer.y,
     fill: "#aabbcc",
@@ -145,7 +145,7 @@ export const modifyShape = ({
   // if  property is width or height, set the scale of the selected element
   if (property === "width") {
     selectedElement.set("scaleX", 1);
-    selectedElement.set("width", value);  
+    selectedElement.set("width", value);
   } else if (property === "height") {
     selectedElement.set("scaleY", 1);
     selectedElement.set("height", value);

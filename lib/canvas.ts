@@ -14,14 +14,17 @@ import {
 import { defaultNavElement } from "@/constants";
 import { createSpecificShape } from "./shapes";
 
+interface InitializeFabricParams {
+  canvasRef: React.RefObject<HTMLCanvasElement>;
+  fabricRef: React.RefObject<fabric.Canvas | null>;
+}
+
 // initialize fabric canvas
 export const initializeFabric = ({
   fabricRef,
   canvasRef,
-}: {
-  fabricRef: React.MutableRefObject<fabric.Canvas | null>;
-  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
-}) => {
+}: InitializeFabricParams): fabric.Canvas => {
+  if (!canvasRef.current || fabricRef.current) return fabricRef.current as fabric.Canvas;
   // get canvas element
   const canvasElement = document.getElementById("canvas");
 
@@ -103,7 +106,7 @@ export const handleCanvasMouseDown = ({
 };
 
 // handle mouse move event on canvas to draw shapes with different dimensions
-export const handleCanvaseMouseMove = ({
+export const handleCanvasMouseMove = ({
   options,
   canvas,
   isDrawing,
