@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styles from './index.module.css';
 import { Avatar } from './Avatar';
-import { useOthers, useSelf } from '@liveblocks/react';
+import { useOthers, useSelf } from '@/liveblocks.config';
 import { generateRandomName } from '@/lib/utils';
 
 export const ActiveUsers = () => {

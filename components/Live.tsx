@@ -3,7 +3,7 @@ import {
   useEventListener,
   useMyPresence,
   useOthers,
-} from '@liveblocks/react/suspense';
+} from '@/liveblocks.config';
 import { LiveCursors } from './cursor/LiveCursors';
 import React, { useCallback, useEffect, useState } from 'react';
 import { CursorChat } from './cursor/CursorChat';

@@ -1,4 +1,4 @@
-import { Circle, fabric, IText, Line, Rect, Triangle } from "fabric";
+import { fabric } from "fabric";
 import { v4 as uuidv4 } from "uuid";
 
 import {
@@ -9,7 +9,7 @@ import {
 } from "@/types/type";
 
 export const createRectangle = (pointer: PointerEvent) => {
-  const rect = new Rect({
+  const rect = new fabric.Rect({
     left: pointer.x,
     top: pointer.y,
     width: 100,
@@ -22,7 +22,7 @@ export const createRectangle = (pointer: PointerEvent) => {
 };
 
 export const createTriangle = (pointer: PointerEvent) => {
-  return new Triangle({
+  return new fabric.Triangle({
     left: pointer.x,
     top: pointer.y,
     width: 100,
@@ -33,7 +33,7 @@ export const createTriangle = (pointer: PointerEvent) => {
 };
 
 export const createCircle = (pointer: PointerEvent) => {
-  return new Circle({
+  return new fabric.Circle({
     left: pointer.x,
     top: pointer.y,
     radius: 100,
@@ -43,7 +43,7 @@ export const createCircle = (pointer: PointerEvent) => {
 };
 
 export const createLine = (pointer: PointerEvent) => {
-  return new Line(
+  return new fabric.Line(
     [pointer.x, pointer.y, pointer.x + 100, pointer.y + 100],
     {
       stroke: "#aabbcc",
@@ -54,7 +54,7 @@ export const createLine = (pointer: PointerEvent) => {
 };
 
 export const createText = (pointer: PointerEvent, text: string) => {
-  return new IText(text, {
+  return new fabric.IText(text, {
     left: pointer.x,
     top: pointer.y,
     fill: "#aabbcc",
