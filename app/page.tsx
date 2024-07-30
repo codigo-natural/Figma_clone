@@ -1,6 +1,6 @@
 'use client';
 
-import { Canvas, FabricObject } from 'fabric';
+import { fabric } from 'fabric';
 
 import { LeftSidebar } from '@/components/LeftSidebar';
 import { Live } from '@/components/Live';
@@ -17,17 +17,20 @@ import {
   renderCanvas,
 } from '@/lib/canvas';
 import { ActiveElement } from '@/types/type';
-import { useMutation, useStorage } from '@/liveblocks.config';
+import { useMutation, useRedo, useStorage, useUndo } from '@/liveblocks.config';
 import { defaultNavElement } from '@/constants';
-import { handleDelete } from '@/lib/key-events';
+import { handleDelete, handleKeyDown } from '@/lib/key-events';
 
 export default function Home() {
+  const undo = useUndo();
+  const redo = useRedo();
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const fabricRef = useRef<Canvas | null>(null);
+  const fabricRef = useRef<fabric.Canvas | null>(null);
   const isDrawing = useRef(false);
-  const shapeRef = useRef<FabricObject | null>(null);
-  const selectedShapeRef = useRef<string | null>('rectangle');
-  const activeObjectRef = useRef<FabricObject | null>(null);
+  const shapeRef = useRef<fabric.Object | null>(null);
+  const selectedShapeRef = useRef<string | null>();
+  const activeObjectRef = useRef<fabric.Object | null>(null);
 
   const canvasObjects = useStorage((root) => root.canvasObjects);
   console.log('in page', canvasObjects);
@@ -50,6 +53,11 @@ export default function Home() {
     value: '',
     icon: '',
   });
+
+  const deleteShapeFromStorage = useMutation(({ storage }, shapeId) => {
+    const canvasObjects = storage.get('canvasObjects');
+    canvasObjects.delete(shapeId);
+  }, []);
 
   const deleteAllShapes = useMutation(({ storage }) => {
     const canvasObjects = storage.get('canvasObjects');
@@ -96,7 +104,7 @@ export default function Home() {
     const handleResizeEvent = () => handleResize({ fabricRef });
     window.addEventListener('resize', handleResizeEvent);
 
-    canvas.on('mouse:down', (options) => {
+    canvas.on('mouse:down', (options: any) => {
       handleCanvasMouseDown({
         options,
         canvas,
@@ -106,7 +114,7 @@ export default function Home() {
       });
     });
 
-    canvas.on('mouse:move', (options) => {
+    canvas.on('mouse:move', (options: any) => {
       handleCanvasMouseMove({
         options,
         canvas,
@@ -117,7 +125,7 @@ export default function Home() {
       });
     });
 
-    canvas.on('mouse:up', (options) => {
+    canvas.on('mouse:up', () => {
       handleCanvasMouseUp({
         canvas,
         isDrawing,
@@ -129,7 +137,7 @@ export default function Home() {
       });
     });
 
-    canvas.on('object:modified', (options) => {
+    canvas.on('object:modified', (options: any) => {
       handleCanvasObjectModified({
         options,
         syncShapeInStorage,
@@ -138,6 +146,17 @@ export default function Home() {
 
     window.addEventListener('resize', () => {
       handleResize({ canvas: fabricRef.current });
+    });
+
+    window.addEventListener('keydown', (e: any) => {
+      handleKeyDown({
+        e,
+        canvas: fabricRef.current,
+        undo,
+        redo,
+        syncShapeInStorage,
+        deleteShapeFromStorage,
+      });
     });
 
     return () => {
