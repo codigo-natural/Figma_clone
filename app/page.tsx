@@ -71,9 +71,13 @@ export default function Home() {
     setActiveElement(elem);
 
     switch (elem?.value) {
+      // delete all the shapes from the canvas
       case 'reset':
+        // clear the storage
         deleteAllShapes();
+        // clear the canvas
         fabricRef.current?.clear();
+        // set 'selected' as the active element
         setActiveElement(defaultNavElement);
         break;
       case 'delete':
@@ -162,7 +166,7 @@ export default function Home() {
         handleActiveElement={handleActivateElement}
       />
       <section className='flex h-full flex-row'>
-        <LeftSidebar />
+        <LeftSidebar allShapes={Array.from(canvasObjects)} />
         <Live canvasRef={canvasRef} />
         <RightSidebar />
       </section>
