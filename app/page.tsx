@@ -174,11 +174,12 @@ export default function Home() {
       });
     });
 
-    canvas.on("object:scaling", (options: any) => {
+    canvas.on('object:scaling', (options: any) => {
       handleCanvasObjectScaling({
-        options, setElementAttributes
-      })
-    })
+        options,
+        setElementAttributes,
+      });
+    });
 
     window.addEventListener('resize', () => {
       handleResize({ canvas: fabricRef.current });
@@ -240,7 +241,7 @@ export default function Home() {
           fabricRef={fabricRef}
           isEditingRef={isEditingRef}
           activeObjectRef={activeObjectRef}
-          syncShapeInStorege={syncShapeInStorage}
+          syncShapeInStorage={syncShapeInStorage}
         />
       </section>
     </main>

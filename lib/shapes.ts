@@ -178,7 +178,7 @@ export const bringElement = ({
   } else if (direction === "back") {
     canvas.sendToBack(selectedElement);
   }
-
+syncShapeInStorage
   // canvas.renderAll();
   syncShapeInStorage(selectedElement);
 
