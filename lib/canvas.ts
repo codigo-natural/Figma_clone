@@ -342,7 +342,6 @@ export const renderCanvas = ({
 }: RenderCanvas) => {
   // clear canvas
   fabricRef.current?.clear();
-  console.log('canvasonjects in canvas', canvasObjects)
 
   // render all objects on canvas
   Array.from(canvasObjects, ([objectId, objectData]) => {

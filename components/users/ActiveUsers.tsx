@@ -9,8 +9,6 @@ export const ActiveUsers = () => {
   const currentUser = useSelf();
   const hasMoreUsers = users.length > 3;
 
-  console.log(currentUser);
-
   const memoizedUsers = useMemo(() => {
     return (
       <div className='flex items-center justify-center gap-1 py-2'>

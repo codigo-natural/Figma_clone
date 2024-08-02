@@ -12,6 +12,7 @@ import {
   handleCanvasMouseMove,
   handleCanvasMouseUp,
   handleCanvasObjectModified,
+  handleCanvasObjectScaling,
   handleCanvasSelectionCreated,
   handleResize,
   initializeFabric,
@@ -56,7 +57,6 @@ export default function Home() {
     shapeData.objectId = objectId;
 
     const canvasObjects = storage.get('canvasObjects');
-    console.log();
 
     canvasObjects.set(objectId, shapeData);
   }, []);
@@ -173,6 +173,12 @@ export default function Home() {
         setElementAttributes,
       });
     });
+
+    canvas.on("object:scaling", (options: any) => {
+      handleCanvasObjectScaling({
+        options, setElementAttributes
+      })
+    })
 
     window.addEventListener('resize', () => {
       handleResize({ canvas: fabricRef.current });
