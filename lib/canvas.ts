@@ -1,5 +1,5 @@
 import { fabric } from "fabric";
-import { v4 as uuid4 } from 'uuid'
+import { v4 as uuid4 } from "uuid";
 
 import {
   CanvasMouseDown,
@@ -103,7 +103,7 @@ export const handleCanvasMouseDown = ({
 };
 
 // handle mouse move event on canvas to draw shapes with different dimensions
-export const handleCanvasMouseMove = ({
+export const handleCanvaseMouseMove = ({
   options,
   canvas,
   isDrawing,
