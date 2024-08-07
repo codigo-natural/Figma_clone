@@ -1,6 +1,6 @@
-import { exportToPdf } from "@/lib/utils";
+import { exportToPdf } from '@/lib/utils';
 
-import { Button } from "../components/ui/button";
+import { Button } from '../ui/button';
 
 const Export = () => (
   <div className='flex flex-col gap-3 px-5 py-3'>

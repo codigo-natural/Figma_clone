@@ -15,7 +15,6 @@ export const Cursor = ({ color, x, y, message }: Props) => {
     >
       <CursorSVG color={color} />
 
-      {/* Mesage */}
       {message && (
         <div
           className='absolute left-2 top-5 rounded-3xl px-4 py-2'

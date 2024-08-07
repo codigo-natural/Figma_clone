@@ -2,7 +2,7 @@ import {
   fontFamilyOptions,
   fontSizeOptions,
   fontWeightOptions,
-} from "@/constants";
+} from '@/constants';
 
 import {
   Select,
@@ -10,18 +10,18 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../components/ui/select";
+} from '../ui/select';
 
 const selectConfigs = [
   {
-    property: "fontFamily",
-    placeholder: "Choose a font",
+    property: 'fontFamily',
+    placeholder: 'Choose a font',
     options: fontFamilyOptions,
   },
-  { property: "fontSize", placeholder: "30", options: fontSizeOptions },
+  { property: 'fontSize', placeholder: '30', options: fontSizeOptions },
   {
-    property: "fontWeight",
-    placeholder: "Semibold",
+    property: 'fontWeight',
+    placeholder: 'Semibold',
     options: fontWeightOptions,
   },
 ];
@@ -89,9 +89,9 @@ const RenderSelect = ({
     key={config.property}
     onValueChange={(value) => handleInputChange(config.property, value)}
     value={
-      config.property === "fontFamily"
+      config.property === 'fontFamily'
         ? fontFamily
-        : config.property === "fontSize"
+        : config.property === 'fontSize'
           ? fontSize
           : fontWeight
     }
@@ -99,11 +99,11 @@ const RenderSelect = ({
     <SelectTrigger className='no-ring w-full rounded-sm border border-primary-grey-200'>
       <SelectValue
         placeholder={
-          config.property === "fontFamily"
-            ? "Choose a font"
-            : config.property === "fontSize"
-              ? "30"
-              : "Semibold"
+          config.property === 'fontFamily'
+            ? 'Choose a font'
+            : config.property === 'fontSize'
+              ? '30'
+              : 'Semibold'
         }
       />
     </SelectTrigger>

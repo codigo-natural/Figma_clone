@@ -1,8 +1,8 @@
 import { modifyShape } from '@/lib/shapes';
-import Color from '@/settings/Color';
-import Dimensions from '@/settings/Dimensions';
-import Export from '@/settings/Export';
-import Text from '@/settings/Text';
+import Color from '@/components/settings/Color';
+import Dimensions from '@/components/settings/Dimensions';
+import Export from '@/components/settings/Export';
+import Text from '@/components/settings/Text';
 import { RightSidebarProps } from '@/types/type';
 import { useRef } from 'react';
 
@@ -52,14 +52,14 @@ export const RightSidebar = ({
         fontWeight={elementAttributes.fontWeight}
         handleInputChange={handleInputChange}
       />
-      <Color 
+      <Color
         inputRef={colorInputRef}
         attribute={elementAttributes.fill}
         attributeType='fill'
         placeholder='color'
         handleInputChange={handleInputChange}
       />
-      <Color 
+      <Color
         inputRef={strokeInputRef}
         attribute={elementAttributes.stroke}
         attributeType='stroke'

@@ -42,10 +42,19 @@ export const CursorChat = ({
         <>
           {/* Custom Cursor shape */}
           <CursorSVG color='#000' />
-          <div 
-            className='absolute left-2 top-5 bg-blue-500 px-4 py-2 text-sm leading-relaxed text-white rounded-[20px]' 
+          <div
+            className='absolute left-2 top-5 bg-blue-500 px-4 py-2 text-sm leading-relaxed text-white rounded-[20px]'
             onKeyUp={(e) => e.stopPropagation()}
+            style={{
+              borderRadius: 20,
+            }}
           >
+            {/**
+             * if there is a previous message, show it above the input
+             *
+             * We're doing this because when user press enter, we want to
+             * show the previous message at top and the input at bottom
+             */}
             {cursorState.previousMessage && (
               <div>{cursorState.previousMessage}</div>
             )}

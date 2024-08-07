@@ -2,6 +2,7 @@ import { useOthers } from '@/liveblocks.config';
 import { Cursor } from './Cursor';
 import { COLORS } from '@/constants';
 
+// siaplay all other live cursors
 export const LiveCursors = () => {
   const others = useOthers()
 
